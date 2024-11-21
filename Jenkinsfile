@@ -1,27 +1,25 @@
 pipeline {
-  agent { label 'agent-node' }
+  agent any
+  environment {
+      PATH = "C:\\Program Files\\Git\\bin;${env.PATH}"
+    }
     stages {
-        stage('clone repo') {
-            steps {
-                echo "Clone the Git repository"
-                git branch: 'main',
-                url: 'https://github.com/kpradeep710/pradeepk.git'
+        stage('Checkout') {
+           steps {
+                git branch: 'main', credentialsId: '626473c6-9dfd-438c-885a-fb64492de479', url: 'https://github.com/kpradeep710/task-2.git'
             }
         }
-
-        stage('Build') {
-            steps {
-                echo "build the maven project"
-                bat 'mvn clean package'
+       stage('Build') {
+           steps {
+              bat 'mvn clean package'  // Using Maven to build your application
             }
         }
-
         stage('Deploy') {
-            steps {
-                echo "connected to ec2-instance and ready to deploy"
-                bat '''
-                scp -i C:/Documents/k.pradeepkumar.pem target/01-maven-web-app.war ec2-user@13.233.64.184:/home/ec2-user
-                '''
+         steps {
+              // Path to the PEM file and the deployment command
+              bat '''
+              scp -i C:/Documents/k.pradeepkumar.pem target/01-maven-web-app.war ec2-user@13.233.64.184:/home/ec2-user
+              '''
             }
         }
     }
