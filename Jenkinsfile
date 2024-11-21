@@ -5,7 +5,7 @@ pipeline {
             steps {
                 echo "Clone the Git repository"
                 git branch: 'main',
-                url: 'https://github.com/kpradeep710/maven-web-app.git'
+                url: 'https://github.com/kpradeep710/pradeepk.git'
             }
         }
 
