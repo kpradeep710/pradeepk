@@ -1,5 +1,5 @@
 pipeline {
-  agent any
+  agent { label 'agent-node' }
   environment {
       PATH = "C:\\Program Files\\Git\\bin;${env.PATH}"
     }
