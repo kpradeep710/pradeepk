@@ -1,7 +1,8 @@
 pipeline {
   agent any
   environment {
-      JAVA_HOME= 'C:/Program Files/Java/jdk-17'
+      JAVA_HOME = "/usr/lib/jvm/java-17-openjdk" // Update this path
+      PATH = "${JAVA_HOME}/bin:${env.PATH}"
       PATH = "/usr/bin:${env.PATH}"
     }
     stages {
@@ -12,13 +13,13 @@ pipeline {
         }
        stage('Build') {
            steps {
-              bat 'mvn clean package'  // Using Maven to build your application
+              sh '/home/ec2-user/slavenode/tools/hudson.tasks.Maven_MavenInstallation/maven-3.9/bin/mvn clean package'  // Using Maven to build your application
             }
         }
         stage('Deploy') {
          steps {
               // Path to the PEM file and the deployment command
-              bat '''
+              sh '''
               scp -i C:/Documents/k.pradeepkumar.pem target/01-maven-web-app.war ec2-user@13.127.107.195:/home/ec2-user
               '''
             }
