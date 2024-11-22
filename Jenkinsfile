@@ -1,7 +1,7 @@
 pipeline {
   agent any
   environment {
-      PATH = "C:\\Program Files\\Git\\bin;${env.PATH}"
+      PATH = "/usr/bin:${env.PATH}"
     }
     stages {
         stage('Checkout') {
