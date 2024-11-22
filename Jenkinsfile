@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Checkout') {
            steps {
-                git branch: 'main', credentialsId: '626473c6-9dfd-438c-885a-fb64492de479', url: 'https://github.com/kpradeep710/task-2.git'
+                git branch: 'main', credentialsId: '626473c6-9dfd-438c-885a-fb64492de479', url: 'https://github.com/kpradeep710/pradeepk.git'
             }
         }
        stage('Build') {
