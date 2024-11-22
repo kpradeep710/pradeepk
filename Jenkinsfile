@@ -18,7 +18,7 @@ pipeline {
          steps {
               // Path to the PEM file and the deployment command
               bat '''
-              scp -i C:/Documents/k.pradeepkumar.pem target/01-maven-web-app.war ec2-user@13.233.64.184:/home/ec2-user
+              scp -i C:/Documents/k.pradeepkumar.pem target/01-maven-web-app.war ec2-user@13.127.107.195:/home/ec2-user
               '''
             }
         }
